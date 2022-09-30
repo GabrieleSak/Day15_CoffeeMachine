@@ -25,7 +25,7 @@ MENU = {
 }
 
 resources = {
-    "water": 300,
+    "water": 3000,
     "milk": 200,
     "coffee": 100,
 }
@@ -48,7 +48,7 @@ def check_resources(product):
         if resources[ingredient] < MENU[product]['ingredients'][ingredient]:
             print(f"Sorry there is not enough {ingredient}")
             enough_ingredients = False
-        return enough_ingredients
+    return enough_ingredients
 
 
 def report():
