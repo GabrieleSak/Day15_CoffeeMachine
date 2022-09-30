@@ -25,7 +25,7 @@ MENU = {
 }
 
 resources = {
-    "water": 3000,
+    "water": 300,
     "milk": 200,
     "coffee": 100,
 }
@@ -33,16 +33,8 @@ resources = {
 money = 0
 
 
-# TODO: 1. User prompt “What would you like? (espresso/latte/cappuccino):”
-# TODO: 2. Turn off the Coffee Machine by entering “off” to the prompt
-# TODO: 3. Print report
-# TODO: 4. Check resources sufficient?
-# TODO: 5. Process coins
-# TODO: 6. Check transaction successful?
-# TODO: 7. Make Coffee.
-
-
 def check_resources(product):
+    """Returns True when order can be made, False if ingredients are insufficient."""
     enough_ingredients = True
     for ingredient in MENU[product]['ingredients'].keys():
         if resources[ingredient] < MENU[product]['ingredients'][ingredient]:
@@ -57,7 +49,9 @@ def report():
           f"Coffee: {resources['coffee']}g\n"
           f"Money: ${money}")
 
+
 def coin_process():
+    """Returns the total calculated from coins inserted."""
     print("Please insert coins.")
     quarters = int(input("How many quarters?: "))
     dimes = int(input("How many dimes?: "))
@@ -65,7 +59,6 @@ def coin_process():
     pennies = int(input("How many pennies?: "))
     sum_of_coins = quarters * 0.25 + dimes * 0.1 + nickles * 0.05 + pennies * 0.01
     return sum_of_coins
-
 
 
 turn_off = False
@@ -90,5 +83,3 @@ while not turn_off:
             print(f"Here is your {choice} ☕. Enjoy!")
             for ingredient in MENU[choice]['ingredients'].keys():
                 resources[ingredient] -= MENU[choice]['ingredients'][ingredient]
-
-
